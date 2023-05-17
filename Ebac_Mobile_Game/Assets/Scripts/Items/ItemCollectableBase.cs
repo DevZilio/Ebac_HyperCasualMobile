@@ -9,11 +9,13 @@ public class ItemCollectableBase : MonoBehaviour
     public float timeToHide = 3;
     public GameObject graphicItem;
 
-   
+    [Header("Sounds")]
+    public AudioSource audioSource;
+
 
 
     //Identify the collision using a Taga name and call the function Collect()
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {
 
         if (collision.transform.CompareTag(compareTag))
@@ -24,8 +26,8 @@ public class ItemCollectableBase : MonoBehaviour
     // Hide the main renderer sprit, starts particle system and wait to end animation
     protected virtual void Collect()
     {
-        // if (graphicItem != null) graphicItem.SetActive(false);
-        // Invoke("HideObject", timeToHide);
+        if (graphicItem != null) graphicItem.SetActive(false);
+        Invoke("HideObject", timeToHide);
         OnCollect();
     }
 
@@ -39,6 +41,6 @@ public class ItemCollectableBase : MonoBehaviour
     protected virtual void OnCollect()
     {
         // if (coinCollected != null) coinCollected.Play();
-        // if(audioSource != null) audioSource.Play();
+        if(audioSource != null) audioSource.Play();
     }
 }
