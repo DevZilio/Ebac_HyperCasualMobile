@@ -13,33 +13,60 @@ public class PlayerController : MonoBehaviour
 
     public string tagToCheckEnemy = "Enemy";
 
+    public string tagToCheckEndLine = "EndLine";
+
+    public GameObject endScreen;
+    public GameObject StartScreen;
+
     private bool _canRun;
+
     private Vector3 _pos;
 
-
-    private void Start() 
+    private void Start()
     {
-        _canRun = true;
+        StartScreen.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!_canRun) return;
+        if (!_canRun) return;
 
         _pos = target.position;
         _pos.y = transform.position.y;
         _pos.z = transform.position.z;
 
-        transform.position = Vector3.Lerp(transform.position,_pos,lerpSpeed * Time.deltaTime);
+        transform.position =
+            Vector3.Lerp(transform.position, _pos, lerpSpeed * Time.deltaTime);
         transform.Translate(transform.forward * speedPlayer * Time.deltaTime);
     }
 
-    private void OnCollisionEnter(Collision collision) 
+    private void OnCollisionEnter(Collision collision)
     {
-        if(collision.transform.tag == tagToCheckEnemy)
+        if (collision.transform.tag == tagToCheckEnemy)
         {
-            _canRun = false;
+            EndGame();
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.tag == tagToCheckEndLine)
+        {
+            EndGame();
+        }
+    }
+
+    private void EndGame()
+    {
+        _canRun = false;
+        endScreen.SetActive(true);
+        Time.timeScale = 0f; // Pause game
+    }
+
+    public void StartToRun()
+    {
+        _canRun = true;
+        Time.timeScale = 1f; // Unpause game
     }
 }
