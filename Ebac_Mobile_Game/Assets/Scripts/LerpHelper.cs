@@ -5,11 +5,16 @@ using UnityEngine;
 public class LerpHelper : MonoBehaviour
 {
     public Transform target;
-public float lerpSpeed = 1f;
+
+    public float lerpSpeed = 1f;
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, target.position, lerpSpeed * Time.deltaTime);
+        transform.position =
+            Vector3
+                .Lerp(transform.position,
+                target.position,
+                lerpSpeed * Time.deltaTime);
     }
 }
