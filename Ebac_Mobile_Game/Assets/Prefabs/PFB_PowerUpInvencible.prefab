@@ -62,8 +62,7 @@ MonoBehaviour:
   compareTag: Player
   timeToHide: 3
   graphicItem: {fileID: 6500453647828551304}
-  audioSource: {fileID: 0}
-  duration: 4
+  duration: 20
 --- !u!1 &6500453648168145154
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,7 +124,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 867ce9c62f1bf42ed93c1ec26195e7cf, type: 2}
+  - {fileID: 2100000, guid: 61cfd043cab5847c18616a347beaa41c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

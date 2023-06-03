@@ -27,6 +27,8 @@ public class PlayerController : Singleton<PlayerController>
     [Header("Text")]
     public TextMeshPro uiTextPowerUp;
 
+    public GameObject triggerCollector;
+
     //privates
     private bool _canRun;
 
@@ -137,6 +139,11 @@ public void ResetHeight()
 //Code animation go up with DGTween
     transform.DOMoveY(_startPosition.y, 1f);
     
+}
+
+public void ChangeColliderCollectorSize(float amount)
+{
+   triggerCollector.transform.localScale = Vector3.one * amount;
 }
 
 #endregion
