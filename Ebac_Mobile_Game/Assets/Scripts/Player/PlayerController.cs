@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DevZilio.Core.Singleton;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
     [Header("Lerp")]
     public Transform target;
@@ -15,16 +16,20 @@ public class PlayerController : MonoBehaviour
 
     public string tagToCheckEndLine = "EndLine";
 
+    //UIs
     public GameObject endScreen;
     public GameObject StartScreen;
 
+    //privates
     private bool _canRun;
-
     private Vector3 _pos;
+    private float _currentSpeed;
 
     private void Start()
     {
         StartScreen.SetActive(true);
+        
+        ResetSpeed();
     }
 
     // Update is called once per frame
@@ -38,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
         transform.position =
             Vector3.Lerp(transform.position, _pos, lerpSpeed * Time.deltaTime);
-        transform.Translate(transform.forward * speedPlayer * Time.deltaTime);
+        transform.Translate(transform.forward * _currentSpeed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -69,4 +74,21 @@ public class PlayerController : MonoBehaviour
         _canRun = true;
         Time.timeScale = 1f; // Unpause game
     }
+
+
+#region POWERUPS
+
+public void PowerUpSpeedUp(float f)
+{
+    _currentSpeed = f;
+    Debug.Log("Up Speed");
+}
+
+public void ResetSpeed()
+{
+    _currentSpeed = speedPlayer;
+    Debug.Log("Reset Speed");
+}
+
+#endregion
 }
