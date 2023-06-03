@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DevZilio.Core.Singleton;
+using TMPro;
 
 public class PlayerController : Singleton<PlayerController>
 {
@@ -20,10 +21,14 @@ public class PlayerController : Singleton<PlayerController>
     public GameObject endScreen;
     public GameObject StartScreen;
 
+    [Header("Text")]
+    public TextMeshPro uiTextPowerUp;
+
     //privates
     private bool _canRun;
     private Vector3 _pos;
     private float _currentSpeed;
+    private bool invencible = false;
 
     private void Start()
     {
@@ -50,7 +55,7 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (collision.transform.tag == tagToCheckEnemy)
         {
-            EndGame();
+            if(!invencible) EndGame();
         }
     }
 
@@ -77,6 +82,10 @@ public class PlayerController : Singleton<PlayerController>
 
 
 #region POWERUPS
+public void SetPowerUpText(string s)
+{
+    uiTextPowerUp.text = s;
+}
 
 public void PowerUpSpeedUp(float f)
 {
@@ -88,6 +97,11 @@ public void ResetSpeed()
 {
     _currentSpeed = speedPlayer;
     Debug.Log("Reset Speed");
+}
+
+public void PowerUpInvencible(bool b = true)
+{
+    invencible = b;
 }
 
 #endregion

@@ -41,6 +41,6 @@ public class ItemCollectableBase : MonoBehaviour
     protected virtual void OnCollect()
     {
         // if (coinCollected != null) coinCollected.Play();
-        if(audioSource != null) audioSource.Play();
+        // if(audioSource != null) audioSource.Play();
     }
 }
