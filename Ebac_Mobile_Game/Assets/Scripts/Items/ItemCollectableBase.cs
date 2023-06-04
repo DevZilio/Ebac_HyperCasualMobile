@@ -5,29 +5,33 @@ using UnityEngine;
 public class ItemCollectableBase : MonoBehaviour
 {
     public string compareTag = "Player";
+
     // public ParticleSystem coinCollected;
     public float timeToHide = 3;
+
     public GameObject graphicItem;
 
-    [Header("Sounds")]
-    public AudioSource audioSource;
-
-
-
+    // [Header("Sounds")]
+    // public AudioSource audioSource;
     //Identify the collision using a Taga name and call the function Collect()
     private void OnTriggerEnter(Collider collision)
     {
-
         if (collision.transform.CompareTag(compareTag))
         {
             Collect();
         }
     }
-    // Hide the main renderer sprit, starts particle system and wait to end animation
-    protected virtual void Collect()
+
+    protected virtual void HideItens()
     {
         if (graphicItem != null) graphicItem.SetActive(false);
         Invoke("HideObject", timeToHide);
+    }
+
+    // Hide the main renderer sprit, starts particle system and wait to end animation
+    protected virtual void Collect()
+    {
+        HideItens();
         OnCollect();
     }
 
@@ -41,6 +45,6 @@ public class ItemCollectableBase : MonoBehaviour
     protected virtual void OnCollect()
     {
         // if (coinCollected != null) coinCollected.Play();
-        if(audioSource != null) audioSource.Play();
+        // if(audioSource != null) audioSource.Play();
     }
 }
