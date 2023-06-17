@@ -4056,6 +4056,7 @@ MonoBehaviour:
   StartScreen: {fileID: 191664279}
   uiTextPowerUp: {fileID: 2005796820}
   triggerCollector: {fileID: 266387287}
+  animatorManager: {fileID: 1145274234}
 --- !u!1001 &826608832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4350,7 +4351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3393953247054871965, guid: 777c3f062117e447fba47966a39a0ace, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 252.6
+      value: 28.7
       objectReference: {fileID: 0}
     - target: {fileID: 3393953247054871965, guid: 777c3f062117e447fba47966a39a0ace, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4557,7 +4558,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.15966249, y: 0.000000016985645, z: -0.000000002747212, w: 0.9871717}
+  m_LocalRotation: {x: 0.1596625, y: -0.000000016985663, z: 0.0000000027472153, w: 0.9871717}
   m_LocalPosition: {x: 1, y: 3.3, z: -10.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5538,36 +5539,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c68cd4948ace45f7964b3fa629c774b, type: 3}
---- !u!1 &1145274232 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5531986718136724959, guid: 89e20167823a30d459856414377997d1, type: 3}
-  m_PrefabInstance: {fileID: 775054255}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1145274233 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7193805671317595757, guid: 89e20167823a30d459856414377997d1, type: 3}
-  m_PrefabInstance: {fileID: 775054255}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1145274234
+--- !u!114 &1145274234 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6953033434089058394, guid: 89e20167823a30d459856414377997d1, type: 3}
+  m_PrefabInstance: {fileID: 775054255}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1145274232}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e916e8e132d094a438df6b26bb1211f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1145274233}
-  animatorSetups:
-  - type: 0
-    trigger: idle
-  - type: 1
-    trigger: run
-  - type: 2
-    trigger: 'dead '
 --- !u!4 &1149983099 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3164183923590068514, guid: 1c68cd4948ace45f7964b3fa629c774b, type: 3}
@@ -6617,7 +6599,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492888937}
-  m_LocalRotation: {x: 0.15966249, y: 0.000000016985645, z: -0.000000002747212, w: 0.9871717}
+  m_LocalRotation: {x: 0.1596625, y: -0.000000016985663, z: 0.0000000027472153, w: 0.9871717}
   m_LocalPosition: {x: 1, y: 3.3, z: -10.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

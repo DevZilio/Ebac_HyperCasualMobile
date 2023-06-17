@@ -29,24 +29,6 @@ public void Play(AnimationType type)
 
 }
 
-public void Update() {
-    if(Input.GetKeyDown(KeyCode.Alpha1))
-    {
-        Play(AnimationType.RUN);
-    }
-    else if(Input.GetKeyDown(KeyCode.Alpha2))
-    {
-        Play(AnimationType.DEAD);
-    }
-    else if(Input.GetKeyDown(KeyCode.Alpha3))
-    {
-        Play(AnimationType.IDLE);
-    }
-}
-
-
-
-
 }
 
 [System.Serializable]

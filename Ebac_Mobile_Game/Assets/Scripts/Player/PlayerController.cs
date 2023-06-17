@@ -1,41 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using DevZilio.Core.Singleton;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using DG.Tweening;
 
 public class PlayerController : Singleton<PlayerController>
 {
     [Header("Lerp")]
     public Transform target;
-
     public float lerpSpeed = 1f;
-
     public float speedPlayer = 1f;
-
     public string tagToCheckEnemy = "Enemy";
-
     public string tagToCheckEndLine = "EndLine";
 
 
     //UIs
     public GameObject endScreen;
-
     public GameObject StartScreen;
 
     [Header("Text")]
     public TextMeshPro uiTextPowerUp;
 
+    [Header("Coin Setup")]
     public GameObject triggerCollector;
 
+    [Header("Animation")]
+    public AnimatorManager animatorManager;
     //privates
     private bool _canRun;
-
     private Vector3 _pos;
-
     private float _currentSpeed;
-
     private bool invencible = false;
     private Vector3 _startPosition;
 
@@ -67,7 +62,7 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (collision.transform.tag == tagToCheckEnemy)
         {
-            if (!invencible) EndGame();
+            if (!invencible) EndGame(AnimatorManager.AnimationType.DEAD);
         }
     }
 
@@ -79,21 +74,23 @@ public class PlayerController : Singleton<PlayerController>
         }
     }
 
-    private void EndGame()
+    private void EndGame(AnimatorManager.AnimationType animationType = AnimatorManager.AnimationType.IDLE)
     {
         _canRun = false;
         endScreen.SetActive(true);
-        Time.timeScale = 0f; // Pause game
+        animatorManager.Play(animationType);
+        // Time.timeScale = 0f; // Pause game
     }
 
     public void StartToRun()
     {
         _canRun = true;
+        animatorManager.Play(AnimatorManager.AnimationType.RUN);
         Time.timeScale = 1f; // Unpause game
     }
 
 
-#region POWERUPS
+    #region POWERUPS
     public void SetPowerUpText(string s)
     {
         uiTextPowerUp.text = s;
@@ -119,32 +116,32 @@ public class PlayerController : Singleton<PlayerController>
     public void ChangeHeight(float amount, float duration, float animationDuration, Ease ease)
     {
         // Code go up 1 option
-       /* var p = transform.position;
-        p.y = _startPosition.y + amount;
-        transform.position = p;
-       */
+        /* var p = transform.position;
+         p.y = _startPosition.y + amount;
+         transform.position = p;
+        */
 
-//Code animation go up with DGTween
+        //Code animation go up with DGTween
         transform.DOMoveY(_startPosition.y + amount, animationDuration).SetEase(ease);
         Invoke(nameof(ResetHeight), duration);
     }
 
-public void ResetHeight()
-{
-    // Code go up 1 option
-    /*var p = transform.position;
-    p.y = _startPosition.y;
-    transform.position = p;*/
+    public void ResetHeight()
+    {
+        // Code go up 1 option
+        /*var p = transform.position;
+        p.y = _startPosition.y;
+        transform.position = p;*/
 
-//Code animation go up with DGTween
-    transform.DOMoveY(_startPosition.y, 1f);
-    
-}
+        //Code animation go up with DGTween
+        transform.DOMoveY(_startPosition.y, 1f);
 
-public void ChangeColliderCollectorSize(float amount)
-{
-   triggerCollector.transform.localScale = Vector3.one * amount;
-}
+    }
 
-#endregion
+    public void ChangeColliderCollectorSize(float amount)
+    {
+        triggerCollector.transform.localScale = Vector3.one * amount;
+    }
+
+    #endregion
 }
