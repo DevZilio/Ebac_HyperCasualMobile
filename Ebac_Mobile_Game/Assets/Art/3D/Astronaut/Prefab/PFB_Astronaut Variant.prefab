@@ -134,4 +134,4 @@ MonoBehaviour:
   - type: 1
     trigger: run
   - type: 2
-    trigger: 'dead '
+    trigger: dead
