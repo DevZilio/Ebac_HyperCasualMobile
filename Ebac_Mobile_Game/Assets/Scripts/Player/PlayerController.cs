@@ -31,8 +31,9 @@ public class PlayerController : Singleton<PlayerController>
     private bool _canRun;
     private Vector3 _pos;
     private float _currentSpeed;
-    private bool invencible = false;
+    private bool _invencible = false;
     private Vector3 _startPosition;
+    private float _baseSpeedToAnimation = 7;
 
 
 
@@ -62,7 +63,11 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (collision.transform.tag == tagToCheckEnemy)
         {
-            if (!invencible) EndGame(AnimatorManager.AnimationType.DEAD);
+            if (!_invencible)
+            {
+                MoveBack();
+                EndGame(AnimatorManager.AnimationType.DEAD);
+            }
         }
     }
 
@@ -72,6 +77,11 @@ public class PlayerController : Singleton<PlayerController>
         {
             EndGame();
         }
+    }
+
+    private void MoveBack()
+    {
+        transform.DOMoveZ(-1f, .3f).SetRelative(); // SetRelative get the current positionm
     }
 
     private void EndGame(AnimatorManager.AnimationType animationType = AnimatorManager.AnimationType.IDLE)
@@ -85,7 +95,7 @@ public class PlayerController : Singleton<PlayerController>
     public void StartToRun()
     {
         _canRun = true;
-        animatorManager.Play(AnimatorManager.AnimationType.RUN);
+        animatorManager.Play(AnimatorManager.AnimationType.RUN, _currentSpeed / _baseSpeedToAnimation );
         Time.timeScale = 1f; // Unpause game
     }
 
@@ -110,7 +120,7 @@ public class PlayerController : Singleton<PlayerController>
 
     public void PowerUpInvencible(bool b = true)
     {
-        invencible = b;
+        _invencible = b;
     }
 
     public void ChangeHeight(float amount, float duration, float animationDuration, Ease ease)
