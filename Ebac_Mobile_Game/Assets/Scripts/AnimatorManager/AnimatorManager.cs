@@ -11,7 +11,8 @@ public class AnimatorManager : MonoBehaviour
     {
         IDLE, 
         RUN, 
-        DEAD
+        DEAD,
+        FLY
     }
 
 
