@@ -13,11 +13,13 @@ public class PowerUpMagnet : PowerUpBase
         
         base.StartPowerUp();
         PlayerController.Instance.ChangeColliderCollectorSize(sizeAmount);
+        PlayerController.Instance.SetPowerUpText("Magnet");
     }
 
     protected override void EndPowerUp()
     {
         base.EndPowerUp();
         PlayerController.Instance.ChangeColliderCollectorSize(1);
+        PlayerController.Instance.SetPowerUpText("");
     }
 }

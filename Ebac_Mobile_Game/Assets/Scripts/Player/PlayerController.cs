@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using DevZilio.Core.Singleton;
 using DG.Tweening;
 using TMPro;
@@ -34,6 +35,7 @@ public class PlayerController : Singleton<PlayerController>
     private bool _invencible = false;
     private Vector3 _startPosition;
     private float _baseSpeedToAnimation = 7;
+    private bool _isFlying = false;
 
 
 
@@ -133,6 +135,8 @@ public class PlayerController : Singleton<PlayerController>
 
         //Code animation go up with DGTween
         transform.DOMoveY(_startPosition.y + amount, animationDuration).SetEase(ease);
+        _isFlying = true;
+        animatorManager.Play(AnimatorManager.AnimationType.FLY);
         Invoke(nameof(ResetHeight), duration);
     }
 
@@ -145,6 +149,13 @@ public class PlayerController : Singleton<PlayerController>
 
         //Code animation go up with DGTween
         transform.DOMoveY(_startPosition.y, 1f);
+
+        _isFlying = false;
+
+        if(!_isFlying)
+        {
+            animatorManager.Play(AnimatorManager.AnimationType.RUN);
+        }
 
     }
 

@@ -234,8 +234,8 @@ MonoBehaviour:
   compareTag: Player
   timeToHide: 3
   graphicItem: {fileID: 6500453647828551304}
-  duration: 3
-  amountToSpeed: 10
+  duration: 10
+  amountToSpeed: 15
 --- !u!1 &6500453648168145154
 GameObject:
   m_ObjectHideFlags: 0
