@@ -1,14 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LoadSceneHelper : MonoBehaviour
 {
-  
-public void Load(int i)
-{
-    SceneManager.LoadScene(i);
-}
+    public Button startButton;
 
+    private void Awake()
+    {
+        startButton.onClick.AddListener(RandomizeLevelPieces);
+        Debug.Log("Awake");
+    }
+
+    private void Start()
+    {
+        Debug.Log("Start");
+    }
+
+    public void RandomizeLevelPieces()
+    {
+        LevelManagerPieces levelManagerPieces = FindObjectOfType<LevelManagerPieces>();
+        if (levelManagerPieces != null)
+        {
+            levelManagerPieces.CreateLevelPieces();
+        }
+        Debug.Log("RandomizeLevelPieces");
+    }
+
+    public void LoadScene(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
+    }
 }

@@ -20,7 +20,7 @@ public class LevelManagerPieces : MonoBehaviour
     private void Awake()
     {
 
-        CreateLevelPieces();
+        // CreateLevelPieces();
 
     }
 
@@ -35,7 +35,7 @@ public class LevelManagerPieces : MonoBehaviour
 
     #region
 
-    private void CreateLevelPieces()
+    public void CreateLevelPieces()
     {
 
         CleanSpawnedPieces();
@@ -65,6 +65,7 @@ public class LevelManagerPieces : MonoBehaviour
         }
 
         ColorManager.Instance.ChangeColorByType(_currSetup.artType);
+        Debug.Log("createLevelPieces");
     }
 
 
@@ -84,12 +85,13 @@ public class LevelManagerPieces : MonoBehaviour
             spawnedPiece.transform.localPosition = Vector3.zero;
         }
 
-        foreach(var p in spawnedPiece.GetComponentsInChildren<ArtPiece>())
+        foreach (var p in spawnedPiece.GetComponentsInChildren<ArtPiece>())
         {
             p.ChangePiece(ArtManager.Instance.GetSetupByType(_currSetup.artType).gameObject);
         }
 
         _spawnedPieces.Add(spawnedPiece);
+        Debug.Log("CreateLevelPiece");
 
 
     }
@@ -101,12 +103,14 @@ public class LevelManagerPieces : MonoBehaviour
             Destroy(_spawnedPieces[i].gameObject);
         }
         _spawnedPieces.Clear();
+        Debug.Log("SpawPieces");
     }
     #endregion
 
     private void ResetLevelIndex()
     {
         _index = 0;
+        Debug.Log("resetLevel");
     }
 
 

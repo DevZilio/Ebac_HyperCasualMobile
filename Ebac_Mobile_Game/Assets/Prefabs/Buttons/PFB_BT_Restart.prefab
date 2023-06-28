@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 7318662806961805708}
   - component: {fileID: 4419668539658532610}
   - component: {fileID: 5682555363323458179}
-  - component: {fileID: 8174477328161479024}
+  - component: {fileID: 941406981989217646}
   m_Layer: 5
   m_Name: PFB_BT_Restart
   m_TagString: Untagged
@@ -258,9 +258,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8174477328161479024}
-        m_TargetAssemblyTypeName: LoadSceneHelper, Assembly-CSharp
-        m_MethodName: Load
+      - m_Target: {fileID: 941406981989217646}
+        m_TargetAssemblyTypeName: LoadMenuHelper, Assembly-CSharp
+        m_MethodName: LoadMenu
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -270,7 +270,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8174477328161479024
+--- !u!114 &941406981989217646
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -279,6 +279,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6055051080525422848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f82ec415f37d48e4a35ce69d7e30313, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e8b0afd887ef427c97a4e157ad328a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
