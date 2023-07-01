@@ -12,11 +12,6 @@ public class LoadSceneHelper : MonoBehaviour
         Debug.Log("Awake");
     }
 
-    private void Start()
-    {
-        Debug.Log("Start");
-    }
-
     public void RandomizeLevelPieces()
     {
         LevelManagerPieces levelManagerPieces = FindObjectOfType<LevelManagerPieces>();

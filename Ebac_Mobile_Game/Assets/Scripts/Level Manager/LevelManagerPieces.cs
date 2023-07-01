@@ -20,7 +20,7 @@ public class LevelManagerPieces : MonoBehaviour
     private void Awake()
     {
 
-        // CreateLevelPieces();
+         //CreateLevelPieces();
 
     }
 
