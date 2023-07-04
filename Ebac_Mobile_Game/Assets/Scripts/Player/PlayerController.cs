@@ -96,6 +96,7 @@ public class PlayerController : Singleton<PlayerController>
 
     public void StartToRun()
     {
+       
         _canRun = true;
         animatorManager.Play(AnimatorManager.AnimationType.RUN, _currentSpeed / _baseSpeedToAnimation );
         Time.timeScale = 1f; // Unpause game
