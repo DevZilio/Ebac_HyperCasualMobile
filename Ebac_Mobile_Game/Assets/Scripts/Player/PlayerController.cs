@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -28,6 +29,7 @@ public class PlayerController : Singleton<PlayerController>
 
     [Header("Animation")]
     public AnimatorManager animatorManager;
+    [SerializeField] private BounceHelper _bounceHelper;
     //privates
     private bool _canRun;
     private Vector3 _pos;
@@ -59,6 +61,13 @@ public class PlayerController : Singleton<PlayerController>
         transform.position =
             Vector3.Lerp(transform.position, _pos, lerpSpeed * Time.deltaTime);
         transform.Translate(transform.forward * _currentSpeed * Time.deltaTime);
+    }
+
+    public void Bounce()
+    
+    {
+        if(_bounceHelper != null)
+        _bounceHelper.Bounce();
     }
 
     private void OnCollisionEnter(Collision collision)
