@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class ItemCollectableCoin : ItemCollectableBase
 {
-    
+
     public Collider collider;
     public bool collect = false;
     public float lerp = 5f;
     public float minDistance = 1f;
 
 
-    
 
 
-    public void Start() {
-        CoinsAnimationManager.Instance.RegisterCoin(this);
+
+    public void Start()
+    {
+        if (CoinsAnimationManager.Instance != null)
+        {
+            CoinsAnimationManager.Instance.RegisterCoin(this);
+        }
+        else
+        {
+            Debug.LogWarning("CoinsAnimationManager instance is null. Make sure it's properly initialized.");
+        }
     }
 
     // Override of the OnCollect function from the ItemCollectableBase class
@@ -41,9 +49,9 @@ public class ItemCollectableCoin : ItemCollectableBase
     {
         if (collect)
         {
-            transform.position = Vector3.Lerp(transform.position,PlayerController.Instance.transform.position,lerp * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, PlayerController.Instance.transform.position, lerp * Time.deltaTime);
 
-            if(Vector3.Distance(transform.position, PlayerController.Instance.transform.position) < minDistance)
+            if (Vector3.Distance(transform.position, PlayerController.Instance.transform.position) < minDistance)
             {
                 HideItens();
                 Destroy(gameObject);

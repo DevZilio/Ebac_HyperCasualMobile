@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using DevZilio.Core.Singleton;
 using DG.Tweening;
 using UnityEngine;
 
-public class BounceHelper : MonoBehaviour
+public class BounceHelper : Singleton<BounceHelper>
 {
 
     [Header("Animation")]
@@ -14,13 +15,20 @@ public class BounceHelper : MonoBehaviour
     private void Update() {
         if(Input.GetKeyDown(KeyCode.B))
         {
-            Bounce();
+            BouncePowerUp();
+
         }
     }
 
-
     public void Bounce()
+    {
+        transform.DOScale(Vector3.one, 1f);
+    }
+
+    public void BouncePowerUp()
     {
         transform.DOScale(scaleBounce, scaleDuration).SetEase(ease).SetLoops(2, LoopType.Yoyo);
     }
+
+  
 }

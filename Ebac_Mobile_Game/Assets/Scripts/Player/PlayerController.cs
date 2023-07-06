@@ -15,6 +15,7 @@ public class PlayerController : Singleton<PlayerController>
     public float speedPlayer = 1f;
     public string tagToCheckEnemy = "Enemy";
     public string tagToCheckEndLine = "EndLine";
+    public float durationDelay = 2f;
 
 
     //UIs
@@ -105,10 +106,17 @@ public class PlayerController : Singleton<PlayerController>
 
     public void StartToRun()
     {
-       
+       StartCoroutine(StartToRunWithDelay());
+    }
+
+    IEnumerator StartToRunWithDelay()
+    {
+        yield return new WaitForSeconds(durationDelay);
+
         _canRun = true;
         animatorManager.Play(AnimatorManager.AnimationType.RUN, _currentSpeed / _baseSpeedToAnimation );
         Time.timeScale = 1f; // Unpause game
+
     }
 
 

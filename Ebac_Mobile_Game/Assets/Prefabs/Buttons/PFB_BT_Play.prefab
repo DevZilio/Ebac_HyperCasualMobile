@@ -147,7 +147,6 @@ GameObject:
   - component: {fileID: 5014625394029712450}
   - component: {fileID: 2113115289503267532}
   - component: {fileID: 7987951739510439757}
-  - component: {fileID: 5870171531112715454}
   m_Layer: 5
   m_Name: PFB_BT_Play
   m_TagString: Untagged
@@ -270,9 +269,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5870171531112715454}
-        m_TargetAssemblyTypeName: LoadSceneHelper, Assembly-CSharp
-        m_MethodName: RandomizeLevelPieces
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: LevelManagerPieces, Assembly-CSharp
+        m_MethodName: CreateLevelPieces
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -294,16 +293,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5870171531112715454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8359040269463137486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f82ec415f37d48e4a35ce69d7e30313, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startButton: {fileID: 7987951739510439757}
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: BounceHelper, Assembly-CSharp
+        m_MethodName: Bounce
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

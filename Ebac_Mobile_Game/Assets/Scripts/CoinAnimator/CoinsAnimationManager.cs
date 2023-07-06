@@ -41,38 +41,66 @@ public class CoinsAnimationManager : Singleton<CoinsAnimationManager>
 
     public void StartAnimationsCoins()
     {
-        StartCoroutine(ScalePiecesByTime());
-    }
-
-
-IEnumerator ScalePiecesByTime()
-{
-    itens.RemoveAll(item => item == null); // Remove referências a objetos nulos
-    foreach (var p in itens)
-    {
-        p.transform.localScale = Vector3.zero;
-    }
-
-    Sort();
-    yield return null;
-
-    for (int i = 0; i < itens.Count; i++)
-    {
-        if (itens[i] != null)
+        if (itens != null)
         {
-            itens[i].transform.DOScale(1, scaleDuration).SetEase(ease);
-            yield return new WaitForSeconds(timeBetweenPieces);
+            StartCoroutine(ScalePiecesByTime());
+        }
+        else
+        {
+            Debug.LogWarning("CoinsAnimationManager itens list is null. Make sure it's properly initialized.");
         }
     }
-}
+
+
+    IEnumerator ScalePiecesByTime()
+    {
+        itens.RemoveAll(item => item == null); // Remove referências a objetos nulos
+        foreach (var p in itens)
+        {
+            p.transform.localScale = Vector3.zero;
+        }
+
+        Sort();
+        yield return null;
+
+        for (int i = 0; i < itens.Count; i++)
+        {
+            if (itens[i] != null)
+            {
+                itens[i].transform.DOScale(1, scaleDuration).SetEase(ease);
+                yield return new WaitForSeconds(timeBetweenPieces);
+            }
+        }
+    }
 
 
 
-// Para usar o OrderBy precisa chamar a biblioteca Using.Linq;
+    // Para usar o OrderBy precisa chamar a biblioteca Using.Linq;
     private void Sort()
     {
         itens = itens.OrderBy(x => Vector3.Distance(this.transform.position, x.transform.position)).ToList();
 
     }
+
+    public void ResetCoins()
+    {
+        if (Instance == null)
+        {
+            return;
+        }
+
+        StopAllCoroutines();
+
+        foreach (var coin in Instance.itens)
+        {
+            if (coin != null)
+            {
+                coin.transform.localScale = Vector3.zero;
+            }
+        }
+
+        Instance.itens.Clear();
+    }
+
 
 }

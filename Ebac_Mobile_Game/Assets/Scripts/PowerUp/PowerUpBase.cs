@@ -10,6 +10,11 @@ public class PowerUpBase : ItemCollectableBase
     protected override void OnCollect()
     {
         base.OnCollect();
+        if (BounceHelper.Instance != null)
+        {
+            BounceHelper.Instance.BouncePowerUp();
+        }
+
         StartPowerUp();
     }
 

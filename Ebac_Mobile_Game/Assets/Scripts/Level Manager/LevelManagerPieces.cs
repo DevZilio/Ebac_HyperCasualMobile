@@ -46,6 +46,17 @@ public class LevelManagerPieces : MonoBehaviour
 
         CleanSpawnedPieces();
 
+        if (CoinsAnimationManager.Instance == null)
+        {
+            CoinsAnimationManager.Instance = new CoinsAnimationManager();
+
+        }
+        else
+        {
+            CoinsAnimationManager.Instance.ResetCoins();
+        }
+
+
         if (_currSetup != null)
         {
             _index++;
