@@ -35,7 +35,7 @@ public class ItemCollectableCoin : ItemCollectableBase
         // Block player catch twice the same item
         collider.enabled = false;
         collect = true;
-        PlayerController.Instance.Bounce();
+        BounceHelper.Instance.BounceCollected();
 
     }
 

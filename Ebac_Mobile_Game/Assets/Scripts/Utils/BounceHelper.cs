@@ -12,22 +12,30 @@ public class BounceHelper : Singleton<BounceHelper>
     public float scaleBounce = 1.2f;
     public Ease ease = Ease.OutBack;
 
+    private Tweener scaleTweener = null;
+
     private void Update() {
         if(Input.GetKeyDown(KeyCode.B))
         {
-            BouncePowerUp();
+            BounceCollected();
 
         }
     }
 
-    public void Bounce()
+//Faz com que o player ao iniciar saia de escala zero para 1
+    public void BounceStart()
     {
         transform.DOScale(Vector3.one, 1f);
     }
 
-    public void BouncePowerUp()
+    public void BounceCollected()
     {
-        transform.DOScale(scaleBounce, scaleDuration).SetEase(ease).SetLoops(2, LoopType.Yoyo);
+        if(scaleTweener != null)
+        {
+            scaleTweener.Kill();
+        }
+        transform.localScale = Vector3.one;
+        scaleTweener = transform.DOScale(scaleBounce, scaleDuration).SetEase(ease).SetLoops(2, LoopType.Yoyo);
     }
 
   

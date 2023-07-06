@@ -64,13 +64,6 @@ public class PlayerController : Singleton<PlayerController>
         transform.Translate(transform.forward * _currentSpeed * Time.deltaTime);
     }
 
-    public void Bounce()
-    
-    {
-        if(_bounceHelper != null)
-        _bounceHelper.Bounce();
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag == tagToCheckEnemy)

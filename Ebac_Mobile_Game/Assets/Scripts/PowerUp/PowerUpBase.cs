@@ -12,7 +12,7 @@ public class PowerUpBase : ItemCollectableBase
         base.OnCollect();
         if (BounceHelper.Instance != null)
         {
-            BounceHelper.Instance.BouncePowerUp();
+            BounceHelper.Instance.BounceCollected();
         }
 
         StartPowerUp();
