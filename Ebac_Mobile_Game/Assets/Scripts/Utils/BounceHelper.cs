@@ -8,8 +8,9 @@ public class BounceHelper : Singleton<BounceHelper>
 {
 
     [Header("Animation")]
-    public float scaleDuration = .2f;
     public float scaleBounce = 1.2f;
+    public float scaleDuration = .2f;
+    public float scaleStartDuration = .8f;
     public Ease ease = Ease.OutBack;
 
     private Tweener scaleTweener = null;
@@ -25,7 +26,7 @@ public class BounceHelper : Singleton<BounceHelper>
 //Faz com que o player ao iniciar saia de escala zero para 1
     public void BounceStart()
     {
-        transform.DOScale(Vector3.one, 1f);
+        transform.DOScale(Vector3.one, scaleStartDuration);
     }
 
     public void BounceCollected()
