@@ -65,7 +65,7 @@ MonoBehaviour:
   graphicItem: {fileID: 7831322388267025675}
   collider: {fileID: 3164183923590068513}
   collect: 0
-  lerp: 5
+  lerp: 6
   minDistance: 1
 --- !u!23 &2128949777551460875
 MeshRenderer:
