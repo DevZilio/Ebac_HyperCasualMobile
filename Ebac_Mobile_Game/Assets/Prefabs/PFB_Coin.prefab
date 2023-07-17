@@ -32,6 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3751454782157014542}
+  - {fileID: 6884691151459467157}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -61,6 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   compareTag: CoinCollector
+  coinCollectedParticle: {fileID: 6884691151459467156}
   timeToHide: 2
   graphicItem: {fileID: 7831322388267025675}
   collider: {fileID: 3164183923590068513}
@@ -208,3 +210,74 @@ MonoBehaviour:
   duration: 1
   meshRenderer: {fileID: 6110444268357377169}
   startColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1001 &1042080628927667647
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3164183923590068514}
+    m_Modifications:
+    - target: {fileID: 5907984868839039530, guid: 5e686569db43d4d93bba7bd62597abb1, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907984868839039530, guid: 5e686569db43d4d93bba7bd62597abb1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907984868839039530, guid: 5e686569db43d4d93bba7bd62597abb1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907984868839039530, guid: 5e686569db43d4d93bba7bd62597abb1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907984868839039530, guid: 5e686569db43d4d93bba7bd62597abb1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907984868839039530, guid: 5e686569db43d4d93bba7bd62597abb1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907984868839039530, guid: 5e686569db43d4d93bba7bd62597abb1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907984868839039530, guid: 5e686569db43d4d93bba7bd62597abb1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907984868839039530, guid: 5e686569db43d4d93bba7bd62597abb1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907984868839039530, guid: 5e686569db43d4d93bba7bd62597abb1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907984868839039530, guid: 5e686569db43d4d93bba7bd62597abb1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907984868839039531, guid: 5e686569db43d4d93bba7bd62597abb1, type: 3}
+      propertyPath: CollisionModule.type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5907984868839039957, guid: 5e686569db43d4d93bba7bd62597abb1, type: 3}
+      propertyPath: m_Name
+      value: PFB_CoinParticle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5e686569db43d4d93bba7bd62597abb1, type: 3}
+--- !u!198 &6884691151459467156 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5907984868839039531, guid: 5e686569db43d4d93bba7bd62597abb1, type: 3}
+  m_PrefabInstance: {fileID: 1042080628927667647}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6884691151459467157 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5907984868839039530, guid: 5e686569db43d4d93bba7bd62597abb1, type: 3}
+  m_PrefabInstance: {fileID: 1042080628927667647}
+  m_PrefabAsset: {fileID: 0}

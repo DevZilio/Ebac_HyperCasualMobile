@@ -6,7 +6,7 @@ public class ItemCollectableBase : MonoBehaviour
 {
     public string compareTag = "Player";
 
-    // public ParticleSystem coinCollected;
+    public ParticleSystem coinCollectedParticle;
     public float timeToHide = 3;
 
     public GameObject graphicItem;
@@ -44,7 +44,11 @@ public class ItemCollectableBase : MonoBehaviour
     // Starts Particle System when item is collected
     protected virtual void OnCollect()
     {
-        // if (coinCollected != null) coinCollected.Play();
+        if (coinCollectedParticle != null)
+        {
+            coinCollectedParticle.transform.SetParent(null);
+            coinCollectedParticle.Play();
+        }
         // if(audioSource != null) audioSource.Play();
     }
 }
