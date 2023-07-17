@@ -492,8 +492,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.62325716
-  m_Center: {x: 0, y: -0.12325716, z: 0}
+  m_Radius: 0.4654129
+  m_Center: {x: -0.020950586, y: -0.18065691, z: 0}
 --- !u!23 &266387290
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1585,8 +1585,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.3063716, z: 1}
-  m_Center: {x: 0, y: 0.733579, z: 0}
+  m_Size: {x: 0.57907367, y: 1.3063716, z: 1}
+  m_Center: {x: -0.005768165, y: 0.733579, z: 0}
 --- !u!23 &814473154
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2790,6 +2790,34 @@ PrefabInstance:
     - target: {fileID: 1268741613484751399, guid: 019ef72ea202c45d388689c1b2f7dc21, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682555363323458179, guid: 019ef72ea202c45d388689c1b2f7dc21, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682555363323458179, guid: 019ef72ea202c45d388689c1b2f7dc21, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682555363323458179, guid: 019ef72ea202c45d388689c1b2f7dc21, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2002972926}
+    - target: {fileID: 5682555363323458179, guid: 019ef72ea202c45d388689c1b2f7dc21, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682555363323458179, guid: 019ef72ea202c45d388689c1b2f7dc21, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ResetLevelIndex
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682555363323458179, guid: 019ef72ea202c45d388689c1b2f7dc21, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: LevelManagerPieces, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682555363323458179, guid: 019ef72ea202c45d388689c1b2f7dc21, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6055051080525422848, guid: 019ef72ea202c45d388689c1b2f7dc21, type: 3}
       propertyPath: m_Name
