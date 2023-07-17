@@ -23,10 +23,10 @@ public class LevelManagerPieces : MonoBehaviour
     public Ease ease = Ease.OutBack;
 
 
-    private void Awake()
+    private void Start()
     {
 
-        //CreateLevelPieces();
+        // CreateLevelPieces();
 
     }
 
@@ -143,7 +143,7 @@ public class LevelManagerPieces : MonoBehaviour
     }
     #endregion
 
-    private void ResetLevelIndex()
+    public void ResetLevelIndex()
     {
         _index = 0;
         Debug.Log("resetLevel");

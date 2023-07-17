@@ -9,6 +9,12 @@ public class ColorManager : Singleton<ColorManager>
     public List<Material> materials;
     public List<ColorSetup> colorSetups;
 
+ public enum ArtType
+    {
+        TYPE_01,
+        TYPE_02,
+        TYPE_03,
+    }
 
     public void ChangeColorByType(ArtManager.ArtType artType)
     {
