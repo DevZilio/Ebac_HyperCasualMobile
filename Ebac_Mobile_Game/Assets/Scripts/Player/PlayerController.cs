@@ -16,6 +16,7 @@ public class PlayerController : Singleton<PlayerController>
     public string tagToCheckEnemy = "Enemy";
     public string tagToCheckEndLine = "EndLine";
     public float durationDelay = 2f;
+    public float durationDelayEndScreen = 1.5f;
 
 
     //UIs
@@ -31,6 +32,10 @@ public class PlayerController : Singleton<PlayerController>
     [Header("Animation")]
     public AnimatorManager animatorManager;
     [SerializeField] private BounceHelper _bounceHelper;
+
+
+    [Header("VFX")]
+    public ParticleSystem vfxDeath;
     //privates
     private bool _canRun;
     private Vector3 _pos;
@@ -71,7 +76,9 @@ public class PlayerController : Singleton<PlayerController>
             if (!_invencible)
             {
                 MoveBack();
+                if (vfxDeath != null) vfxDeath.Play();
                 EndGame(AnimatorManager.AnimationType.DEAD);
+                StartCoroutine(EndScreenWithDelay());
             }
         }
     }
@@ -81,9 +88,17 @@ public class PlayerController : Singleton<PlayerController>
         if (other.transform.tag == tagToCheckEndLine)
         {
             EndGame();
+            endScreen.SetActive(true);
         }
     }
 
+    IEnumerator EndScreenWithDelay()
+    {
+        yield return new WaitForSeconds(durationDelayEndScreen);
+
+        endScreen.SetActive(true);
+
+    }
     private void MoveBack()
     {
         transform.DOMoveZ(-1f, .3f).SetRelative(); // SetRelative get the current positionm
@@ -92,14 +107,14 @@ public class PlayerController : Singleton<PlayerController>
     private void EndGame(AnimatorManager.AnimationType animationType = AnimatorManager.AnimationType.IDLE)
     {
         _canRun = false;
-        endScreen.SetActive(true);
+        // endScreen.SetActive(true);
         animatorManager.Play(animationType);
         // Time.timeScale = 0f; // Pause game
     }
 
     public void StartToRun()
     {
-       StartCoroutine(StartToRunWithDelay());
+        StartCoroutine(StartToRunWithDelay());
     }
 
     IEnumerator StartToRunWithDelay()
@@ -107,7 +122,7 @@ public class PlayerController : Singleton<PlayerController>
         yield return new WaitForSeconds(durationDelay);
 
         _canRun = true;
-        animatorManager.Play(AnimatorManager.AnimationType.RUN, _currentSpeed / _baseSpeedToAnimation );
+        animatorManager.Play(AnimatorManager.AnimationType.RUN, _currentSpeed / _baseSpeedToAnimation);
         Time.timeScale = 1f; // Unpause game
 
     }
@@ -163,7 +178,7 @@ public class PlayerController : Singleton<PlayerController>
 
         _isFlying = false;
 
-        if(!_isFlying)
+        if (!_isFlying)
         {
             animatorManager.Play(AnimatorManager.AnimationType.RUN);
         }
