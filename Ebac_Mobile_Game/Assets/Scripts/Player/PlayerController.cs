@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 using DevZilio.Core.Singleton;
 using DG.Tweening;
@@ -36,6 +37,11 @@ public class PlayerController : Singleton<PlayerController>
 
     [Header("VFX")]
     public ParticleSystem vfxDeath;
+
+
+    [Header("Limits")]
+    public float limit = 4;
+
     //privates
     private bool _canRun;
     private Vector3 _pos;
@@ -64,8 +70,12 @@ public class PlayerController : Singleton<PlayerController>
         _pos.y = transform.position.y;
         _pos.z = transform.position.z;
 
-        transform.position =
-            Vector3.Lerp(transform.position, _pos, lerpSpeed * Time.deltaTime);
+        //Side limit check
+        if (_pos.x < -limit) _pos.x = -limit;
+        else if (_pos.x > limit) _pos.x = limit;
+
+            transform.position =
+                Vector3.Lerp(transform.position, _pos, lerpSpeed * Time.deltaTime);
         transform.Translate(transform.forward * _currentSpeed * Time.deltaTime);
     }
 
