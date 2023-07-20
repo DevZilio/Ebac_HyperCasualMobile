@@ -5,14 +5,11 @@ using UnityEngine;
 
 public class LevelManagerPieces : MonoBehaviour
 {
-    //Publics
+    // Publics
     public Transform container;
-
     public List<LevelPieceBasedSetup> levelPieceBasedSetups;
 
-
-
-    //Privates
+    // Privates
     private List<LevelPieceBase> _spawnedPieces = new List<LevelPieceBase>();
     private LevelPieceBasedSetup _currSetup;
     private int _index = 1;
@@ -22,12 +19,9 @@ public class LevelManagerPieces : MonoBehaviour
     public float timeBetweenPieces = .1f;
     public Ease ease = Ease.OutBack;
 
-
     private void Start()
     {
-
         // CreateLevelPieces();
-
     }
 
     private void Update()
@@ -38,56 +32,97 @@ public class LevelManagerPieces : MonoBehaviour
         }
     }
 
-
     #region
 
-    public void CreateLevelPieces()
+public void CreateLevelPieces()
+{
+    CleanSpawnedPieces();
+
+    if (CoinsAnimationManager.Instance == null)
     {
+        CoinsAnimationManager.Instance = new CoinsAnimationManager();
+    }
+    else
+    {
+        CoinsAnimationManager.Instance.ResetCoins();
+    }
 
-        CleanSpawnedPieces();
-
-        if (CoinsAnimationManager.Instance == null)
+    if (_currSetup != null)
+    {
+        _index++;
+        if (_index >= levelPieceBasedSetups.Count)
         {
-            CoinsAnimationManager.Instance = new CoinsAnimationManager();
+            ResetLevelIndex();
+        }
+    }
 
+    _currSetup = levelPieceBasedSetups[_index];
+
+    // Criar a peça do início do cenário (peça fixa)
+    if (_currSetup.pieceStartNumber > 0 && _currSetup.levelPieceStart.Count > 0)
+    {
+        CreateLevelPiece(_currSetup.levelPieceStart[0]);
+    }
+
+    // Criar as peças intermediárias randomicamente
+    List<LevelPieceBase> availablePieces = new List<LevelPieceBase>(_currSetup.levelPieces);
+    int consecutiveCount = 0;
+    int piecesCount = 0;
+
+    while (piecesCount < _currSetup.piecesNumber)
+    {
+        // Verificar se ainda há peças disponíveis para criar
+        if (availablePieces.Count == 0)
+        {
+            availablePieces = new List<LevelPieceBase>(_currSetup.levelPieces); // Resetar a lista de peças disponíveis
+            continue; // Continuar o loop para tentar novamente criar as peças restantes
+        }
+
+        // Obtemos a próxima peça aleatória
+        LevelPieceBase nextPiece = availablePieces[Random.Range(0, availablePieces.Count)];
+
+        // Removemos a peça da lista de peças disponíveis para evitar repetições em sequência
+        availablePieces.Remove(nextPiece);
+
+        // Se a próxima peça for igual à última criada, adicionamos 1 ao contador de peças consecutivas
+        if (_spawnedPieces.Count > 0 && nextPiece == _spawnedPieces[_spawnedPieces.Count - 1])
+        {
+            consecutiveCount++;
         }
         else
         {
-            CoinsAnimationManager.Instance.ResetCoins();
+            // Se a próxima peça for diferente, resetamos o contador
+            consecutiveCount = 0;
         }
 
-
-        if (_currSetup != null)
+        // Se tivermos 3 peças consecutivas iguais, adicionamos novamente a peça removida para evitar quebras na sequência
+        if (consecutiveCount >= 3 && availablePieces.Count > 0)
         {
-            _index++;
-            if (_index >= levelPieceBasedSetups.Count)
-            {
-                ResetLevelIndex();
-            }
+            availablePieces.Add(nextPiece);
+            nextPiece = availablePieces[Random.Range(0, availablePieces.Count)];
+            availablePieces.Remove(nextPiece);
+            consecutiveCount = 0; // Resetamos o contador após escolher uma peça diferente
         }
 
-        _currSetup = levelPieceBasedSetups[_index];
-
-        for (int i = 0; i < _currSetup.pieceStartNumber; i++)
-        {
-            CreateLevelPiece(_currSetup.levelPieceStart);
-        }
-        for (int i = 0; i < _currSetup.piecesNumber; i++)
-        {
-            CreateLevelPiece(_currSetup.levelPieces);
-        }
-        for (int i = 0; i < _currSetup.pieceEndNumber; i++)
-        {
-            CreateLevelPiece(_currSetup.levelPieceEnd);
-        }
-
-        ColorManager.Instance.ChangeColorByType(_currSetup.artType);
-
-        StartCoroutine(ScalePiecesByTime());
-        CoinsAnimationManager.Instance.StartAnimationsCoins();
-
-        Debug.Log("createLevelPieces");
+        CreateLevelPiece(nextPiece);
+        piecesCount++; // Incrementar a contagem de peças criadas
     }
+
+    // Criar a peça do fim do cenário (peça fixa)
+    if (_currSetup.pieceEndNumber > 0 && _currSetup.levelPieceEnd.Count > 0)
+    {
+        CreateLevelPiece(_currSetup.levelPieceEnd[0]);
+    }
+
+    ColorManager.Instance.ChangeColorByType(_currSetup.artType);
+
+    StartCoroutine(ScalePiecesByTime());
+    CoinsAnimationManager.Instance.StartAnimationsCoins();
+
+    Debug.Log("createLevelPieces");
+}
+
+
 
     IEnumerator ScalePiecesByTime()
     {
@@ -105,9 +140,8 @@ public class LevelManagerPieces : MonoBehaviour
         }
     }
 
-    private void CreateLevelPiece(List<LevelPieceBase> list)
+    private void CreateLevelPiece(LevelPieceBase piece)
     {
-        var piece = list[Random.Range(0, list.Count)];
         var spawnedPiece = Instantiate(piece, container);
 
         if (_spawnedPieces.Count > 0)
@@ -128,8 +162,6 @@ public class LevelManagerPieces : MonoBehaviour
 
         _spawnedPieces.Add(spawnedPiece);
         Debug.Log("CreateLevelPiece");
-
-
     }
 
     private void CleanSpawnedPieces()
@@ -148,7 +180,4 @@ public class LevelManagerPieces : MonoBehaviour
         _index = 0;
         Debug.Log("resetLevel");
     }
-
-
 }
-
