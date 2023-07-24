@@ -466,6 +466,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4952766770113508637}
     m_Modifications:
+    - target: {fileID: 596239985704658599, guid: 9a0074008d64647749fae5991f94b4db, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111332475137895607, guid: 9a0074008d64647749fae5991f94b4db, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111332475137895607, guid: 9a0074008d64647749fae5991f94b4db, type: 3}
+      propertyPath: m_VersionIndex
+      value: 10884
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983438070866876278, guid: 9a0074008d64647749fae5991f94b4db, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6500453647828551304, guid: 9a0074008d64647749fae5991f94b4db, type: 3}
       propertyPath: m_Name
       value: PFB_PowerUpMagnet
@@ -480,7 +496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6500453647828551309, guid: 9a0074008d64647749fae5991f94b4db, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.51
+      value: 0.94
       objectReference: {fileID: 0}
     - target: {fileID: 6500453647828551309, guid: 9a0074008d64647749fae5991f94b4db, type: 3}
       propertyPath: m_LocalPosition.z
