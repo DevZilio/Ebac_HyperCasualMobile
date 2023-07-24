@@ -22,7 +22,8 @@ public class PlayerController : Singleton<PlayerController>
 
     //UIs
     public GameObject endScreen;
-    public GameObject StartScreen;
+    public GameObject startScreen;
+    public GameObject inGameScreen;
 
     [Header("Text")]
     public TextMeshPro uiTextPowerUp;
@@ -56,7 +57,8 @@ public class PlayerController : Singleton<PlayerController>
 
     private void Start()
     {
-        StartScreen.SetActive(true);
+        startScreen.SetActive(true);
+        inGameScreen.SetActive(false);
         _startPosition = transform.position;
         ResetSpeed();
     }
@@ -89,6 +91,7 @@ public class PlayerController : Singleton<PlayerController>
                 if (vfxDeath != null) vfxDeath.Play();
                 EndGame(AnimatorManager.AnimationType.DEAD);
                 StartCoroutine(EndScreenWithDelay());
+            
             }
         }
     }
@@ -107,6 +110,7 @@ public class PlayerController : Singleton<PlayerController>
         yield return new WaitForSeconds(durationDelayEndScreen);
 
         endScreen.SetActive(true);
+        inGameScreen.SetActive(false);
 
     }
     private void MoveBack()

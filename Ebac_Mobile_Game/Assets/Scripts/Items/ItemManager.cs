@@ -25,5 +25,10 @@ public class ItemManager : Singleton<ItemManager>
         coins.value += amount;
     }
 
+    public int GetTotalCoins()
+    {
+        return coins.value;
+    }
+
 
 }
