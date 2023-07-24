@@ -232,9 +232,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   compareTag: Player
+  coinCollectedParticle: {fileID: 0}
   timeToHide: 3
   graphicItem: {fileID: 6500453647828551304}
-  duration: 9
+  duration: 7
   sizeAmount: 9
 --- !u!1 &6500453648168145154
 GameObject:
