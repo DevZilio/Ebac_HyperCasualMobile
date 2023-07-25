@@ -19,9 +19,9 @@ public class LevelManagerPieces : MonoBehaviour
     public float timeBetweenPieces = .1f;
     public Ease ease = Ease.OutBack;
 
-    private void Start()
+    private void Awake()
     {
-        // CreateLevelPieces();
+        _index=Random.Range(0, levelPieceBasedSetups.Count);
     }
 
     private void Update()
