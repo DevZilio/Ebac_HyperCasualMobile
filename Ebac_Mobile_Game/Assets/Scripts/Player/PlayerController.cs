@@ -76,8 +76,8 @@ public class PlayerController : Singleton<PlayerController>
         if (_pos.x < -limit) _pos.x = -limit;
         else if (_pos.x > limit) _pos.x = limit;
 
-            transform.position =
-                Vector3.Lerp(transform.position, _pos, lerpSpeed * Time.deltaTime);
+        transform.position =
+            Vector3.Lerp(transform.position, _pos, lerpSpeed * Time.deltaTime);
         transform.Translate(transform.forward * _currentSpeed * Time.deltaTime);
     }
 
@@ -91,7 +91,7 @@ public class PlayerController : Singleton<PlayerController>
                 if (vfxDeath != null) vfxDeath.Play();
                 EndGame(AnimatorManager.AnimationType.DEAD);
                 StartCoroutine(EndScreenWithDelay());
-            
+
             }
         }
     }
@@ -100,8 +100,9 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (other.transform.tag == tagToCheckEndLine)
         {
+            ConfettiManager.instance.PlayConfetti();
             EndGame();
-            endScreen.SetActive(true);
+            StartCoroutine(EndScreenWithDelay());
         }
     }
 
