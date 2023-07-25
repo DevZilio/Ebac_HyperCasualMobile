@@ -69,7 +69,7 @@ public void CreateLevelPieces()
     int consecutiveCount = 0;
     int piecesCount = 0;
 
-    while (piecesCount < _currSetup.piecesNumber)
+    while (piecesCount < _currSetup.PiecesNumber)
     {
         // Verificar se ainda há peças disponíveis para criar
         if (availablePieces.Count == 0)
