@@ -19,6 +19,8 @@ public class PlayerController : Singleton<PlayerController>
     public float durationDelay = 2f;
     public float durationDelayEndScreen = 1.5f;
 
+    public GameObject playerRenderer;
+
 
     //UIs
     public GameObject endScreen;
@@ -54,7 +56,11 @@ public class PlayerController : Singleton<PlayerController>
 
 
 
-
+    private void Awake()
+    {
+        HidePlayer();
+    }
+   
     private void Start()
     {
         startScreen.SetActive(true);
@@ -129,6 +135,7 @@ public class PlayerController : Singleton<PlayerController>
 
     public void StartToRun()
     {
+        ShowPlayer();
         StartCoroutine(StartToRunWithDelay());
     }
 
@@ -204,6 +211,21 @@ public class PlayerController : Singleton<PlayerController>
     {
         triggerCollector.transform.localScale = Vector3.one * amount;
     }
+
+
+    // Função para ocultar o objeto
+    public void HidePlayer()
+    {
+        playerRenderer.SetActive(false);
+    }
+
+    // Função para tornar o objeto visível novamente
+    public void ShowPlayer()
+    {
+        playerRenderer.SetActive(true);
+    }
+
+
 
     #endregion
 }
