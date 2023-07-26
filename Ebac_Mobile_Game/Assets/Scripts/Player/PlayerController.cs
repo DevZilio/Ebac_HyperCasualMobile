@@ -56,8 +56,9 @@ public class PlayerController : Singleton<PlayerController>
 
 
 
-    private void Awake()
+    new protected void Awake()
     {
+        base.Awake();
         HidePlayer();
     }
    
