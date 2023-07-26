@@ -41,6 +41,9 @@ public class PlayerController : Singleton<PlayerController>
     [Header("VFX")]
     public ParticleSystem vfxDeath;
 
+    [Header("SFX")]
+    public AudioSource bangSound;
+
 
     [Header("Limits")]
     public float limit = 4;
@@ -96,6 +99,7 @@ public class PlayerController : Singleton<PlayerController>
             {
                 MoveBack();
                 if (vfxDeath != null) vfxDeath.Play();
+                if(bangSound !=null) bangSound.Play();
                 EndGame(AnimatorManager.AnimationType.DEAD);
                 StartCoroutine(EndScreenWithDelay());
 
