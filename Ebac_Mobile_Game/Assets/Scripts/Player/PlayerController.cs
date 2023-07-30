@@ -56,6 +56,7 @@ public class PlayerController : Singleton<PlayerController>
     private Vector3 _startPosition;
     private float _baseSpeedToAnimation = 7;
     private bool _isFlying = false;
+    private AudioManager audioManager;
 
 
 
@@ -64,12 +65,13 @@ public class PlayerController : Singleton<PlayerController>
         base.Awake();
         HidePlayer();
     }
-   
+
     private void Start()
     {
         startScreen.SetActive(true);
         inGameScreen.SetActive(false);
         _startPosition = transform.position;
+        audioManager = FindObjectOfType<AudioManager>();
         ResetSpeed();
     }
 
@@ -99,7 +101,7 @@ public class PlayerController : Singleton<PlayerController>
             {
                 MoveBack();
                 if (vfxDeath != null) vfxDeath.Play();
-                if(bangSound !=null) bangSound.Play();
+                if (bangSound != null) bangSound.Play();
                 EndGame(AnimatorManager.AnimationType.DEAD);
                 StartCoroutine(EndScreenWithDelay());
 
@@ -112,6 +114,7 @@ public class PlayerController : Singleton<PlayerController>
         if (other.transform.tag == tagToCheckEndLine)
         {
             ConfettiManager.instance.PlayConfetti();
+            audioManager.PlayVictoryMusic();
             EndGame();
             StartCoroutine(EndScreenWithDelay());
         }
