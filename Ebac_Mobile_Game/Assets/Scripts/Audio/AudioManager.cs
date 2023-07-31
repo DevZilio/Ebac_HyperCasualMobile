@@ -6,19 +6,22 @@ public class AudioManager : MonoBehaviour
 {
     public AudioSource ambientSound;
     public AudioSource victoryMusic;
+    public AudioSource defeatSound;
+    public AudioSource coinCollectedSFX;
+    public AudioSource powerUpCollectedSFX;
 
-    private bool isVictoryMusicPlaying = false;
+    // private bool isVictoryMusicPlaying = false;
 
     void Start()
     {
-        // Certifique-se de que as músicas estejam configuradas corretamente no Inspector
-        if (ambientSound == null || victoryMusic == null)
+        // Check If the setup are correctly
+        if (ambientSound == null || victoryMusic == null || defeatSound == null)
         {
             Debug.LogError("Certifique-se de atribuir as fontes de áudio no Inspector.");
             return;
         }
 
-        // Inicie o som ambiente em loop
+        // Start ambience sound in loop
         PlayAmbientSound();
     }
 
@@ -35,14 +38,46 @@ public class AudioManager : MonoBehaviour
     {
         if (victoryMusic != null)
         {
-            // Pausar o som ambiente
+            //Stop ambience sound
             if (ambientSound.isPlaying)
             {
                 ambientSound.Pause();
             }
 
             victoryMusic.Play();
-            isVictoryMusicPlaying = true;
+            // isVictoryMusicPlaying = true;
         }
     }
+
+    public void PlayDefeatSound()
+    {
+        if (defeatSound != null)
+
+        {
+            //Stop ambience sound
+            if (ambientSound.isPlaying)
+            {
+                ambientSound.Pause();
+            }
+        }
+        defeatSound.Play();
+    }
+
+    public void CoinCollectedSFX()
+    {
+        if (coinCollectedSFX != null)
+        {
+            coinCollectedSFX.Play();
+        }
+    }
+
+    public void PowerUpCollectedSFX()
+    {
+        if (powerUpCollectedSFX != null)
+        {
+            powerUpCollectedSFX.Play();
+        }
+    }
+
+
 }

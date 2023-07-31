@@ -281,6 +281,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4952766770113508637}
     m_Modifications:
+    - target: {fileID: 1114857001018793242, guid: cd24aac8177d74bf0b14b9e5cee0a095, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1380329739986986289, guid: cd24aac8177d74bf0b14b9e5cee0a095, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506353519016252872, guid: cd24aac8177d74bf0b14b9e5cee0a095, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2035764750861282533, guid: cd24aac8177d74bf0b14b9e5cee0a095, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378832208457914830, guid: cd24aac8177d74bf0b14b9e5cee0a095, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2655597991575880455, guid: cd24aac8177d74bf0b14b9e5cee0a095, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876547957017160699, guid: cd24aac8177d74bf0b14b9e5cee0a095, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3071423091443229081, guid: cd24aac8177d74bf0b14b9e5cee0a095, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6500453647828551304, guid: cd24aac8177d74bf0b14b9e5cee0a095, type: 3}
       propertyPath: m_Name
       value: PFB_PowerUpInvencible
@@ -295,7 +327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6500453647828551309, guid: cd24aac8177d74bf0b14b9e5cee0a095, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.51
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: 6500453647828551309, guid: cd24aac8177d74bf0b14b9e5cee0a095, type: 3}
       propertyPath: m_LocalPosition.z
@@ -328,6 +360,46 @@ PrefabInstance:
     - target: {fileID: 6500453647828551309, guid: cd24aac8177d74bf0b14b9e5cee0a095, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654561878642012034, guid: cd24aac8177d74bf0b14b9e5cee0a095, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6830652588222801512, guid: cd24aac8177d74bf0b14b9e5cee0a095, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6893814091564885777, guid: cd24aac8177d74bf0b14b9e5cee0a095, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7606001813765277289, guid: cd24aac8177d74bf0b14b9e5cee0a095, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7862881384131083516, guid: cd24aac8177d74bf0b14b9e5cee0a095, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7892246943194414742, guid: cd24aac8177d74bf0b14b9e5cee0a095, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7914653243289914631, guid: cd24aac8177d74bf0b14b9e5cee0a095, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8192615337547904502, guid: cd24aac8177d74bf0b14b9e5cee0a095, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968261122414271025, guid: cd24aac8177d74bf0b14b9e5cee0a095, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112721894074303382, guid: cd24aac8177d74bf0b14b9e5cee0a095, type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd24aac8177d74bf0b14b9e5cee0a095, type: 3}

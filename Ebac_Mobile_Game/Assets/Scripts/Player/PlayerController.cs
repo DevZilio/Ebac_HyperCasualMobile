@@ -26,6 +26,7 @@ public class PlayerController : Singleton<PlayerController>
     public GameObject endScreen;
     public GameObject startScreen;
     public GameObject inGameScreen;
+    public GameObject deathScreen;
 
     [Header("Text")]
     public TextMeshPro uiTextPowerUp;
@@ -56,7 +57,7 @@ public class PlayerController : Singleton<PlayerController>
     private Vector3 _startPosition;
     private float _baseSpeedToAnimation = 7;
     private bool _isFlying = false;
-    private AudioManager audioManager;
+    private AudioManager _audioManager;
 
 
 
@@ -71,7 +72,7 @@ public class PlayerController : Singleton<PlayerController>
         startScreen.SetActive(true);
         inGameScreen.SetActive(false);
         _startPosition = transform.position;
-        audioManager = FindObjectOfType<AudioManager>();
+        _audioManager = FindObjectOfType<AudioManager>();
         ResetSpeed();
     }
 
@@ -102,8 +103,9 @@ public class PlayerController : Singleton<PlayerController>
                 MoveBack();
                 if (vfxDeath != null) vfxDeath.Play();
                 if (bangSound != null) bangSound.Play();
+            if(_audioManager != null) _audioManager.PlayDefeatSound();
                 EndGame(AnimatorManager.AnimationType.DEAD);
-                StartCoroutine(EndScreenWithDelay());
+                StartCoroutine(DeathScreenWithDelay());
 
             }
         }
@@ -114,7 +116,7 @@ public class PlayerController : Singleton<PlayerController>
         if (other.transform.tag == tagToCheckEndLine)
         {
             ConfettiManager.instance.PlayConfetti();
-            audioManager.PlayVictoryMusic();
+            if(_audioManager != null) _audioManager.PlayVictoryMusic();
             EndGame();
             StartCoroutine(EndScreenWithDelay());
         }
@@ -125,6 +127,14 @@ public class PlayerController : Singleton<PlayerController>
         yield return new WaitForSeconds(durationDelayEndScreen);
 
         endScreen.SetActive(true);
+        inGameScreen.SetActive(false);
+
+    }
+    IEnumerator DeathScreenWithDelay()
+    {
+        yield return new WaitForSeconds(durationDelayEndScreen);
+
+        deathScreen.SetActive(true);
         inGameScreen.SetActive(false);
 
     }

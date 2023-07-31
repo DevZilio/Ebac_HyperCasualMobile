@@ -9,6 +9,8 @@ public class ItemCollectableCoin : ItemCollectableBase
     public bool collect = false;
     public float lerp = 5f;
     public float minDistance = 1f;
+
+    private AudioManager _audioManager;
     
 
 
@@ -17,6 +19,8 @@ public class ItemCollectableCoin : ItemCollectableBase
 
     public void Start()
     {
+        _audioManager = FindObjectOfType<AudioManager>();
+
         if (CoinsAnimationManager.Instance != null)
         {
             CoinsAnimationManager.Instance.RegisterCoin(this);
@@ -37,6 +41,7 @@ public class ItemCollectableCoin : ItemCollectableBase
         collider.enabled = false;
         collect = true;
         BounceHelper.Instance.BounceCollected();
+        if(_audioManager != null) _audioManager.CoinCollectedSFX();
 
         // Call the AddCoins function in the ItemManager singleton
         ItemManager.Instance.AddCoins();

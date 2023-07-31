@@ -11,8 +11,8 @@ public class ItemCollectableBase : MonoBehaviour
 
     public GameObject graphicItem;
 
-    [Header("Sounds")]
-    public AudioSource audioSource;
+    // [Header("Sounds")]
+    // public AudioSource audioSource;
 
     //Identify the collision using a Taga name and call the function Collect()
     private void OnTriggerEnter(Collider collision)
@@ -50,10 +50,10 @@ public class ItemCollectableBase : MonoBehaviour
             coinCollectedParticle.transform.SetParent(null);
             coinCollectedParticle.Play();
         }
-        if (audioSource != null)
-        {
-            audioSource.transform.SetParent(null);
-            audioSource.Play();
-        }
+        // if (audioSource != null)
+        // {
+        //     audioSource.transform.SetParent(null);
+        //     audioSource.Play();
+        // }
     }
 }

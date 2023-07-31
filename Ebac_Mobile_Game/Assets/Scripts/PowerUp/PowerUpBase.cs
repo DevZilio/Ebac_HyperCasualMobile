@@ -7,6 +7,13 @@ public class PowerUpBase : ItemCollectableBase
     [Header("Power Up")]
     public float duration;
 
+    private AudioManager _audioManager;
+
+    private void Start()
+    {
+        _audioManager = FindObjectOfType<AudioManager>();
+    }
+
     protected override void OnCollect()
     {
         base.OnCollect();
@@ -14,6 +21,8 @@ public class PowerUpBase : ItemCollectableBase
         {
             BounceHelper.Instance.BounceCollected();
         }
+
+        if(_audioManager != null) _audioManager.PowerUpCollectedSFX();
 
         StartPowerUp();
     }
