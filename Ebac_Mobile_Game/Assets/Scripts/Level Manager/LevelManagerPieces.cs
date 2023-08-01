@@ -12,7 +12,7 @@ public class LevelManagerPieces : MonoBehaviour
     // Privates
     private List<LevelPieceBase> _spawnedPieces = new List<LevelPieceBase>();
     private LevelPieceBasedSetup _currSetup;
-    private int _index = 1;
+    private int _index;
 
     [Header("Animation")]
     public float scaleDuration = .2f;
@@ -22,6 +22,7 @@ public class LevelManagerPieces : MonoBehaviour
     private void Awake()
     {
         _index=Random.Range(0, levelPieceBasedSetups.Count);
+        Debug.Log("Random index"+ _index);
     }
 
     private void Update()
@@ -34,93 +35,93 @@ public class LevelManagerPieces : MonoBehaviour
 
     #region
 
-public void CreateLevelPieces()
-{
-    CleanSpawnedPieces();
+    public void CreateLevelPieces()
+    {
+        CleanSpawnedPieces();
 
-    if (CoinsAnimationManager.Instance == null)
-    {
-        CoinsAnimationManager.Instance = new CoinsAnimationManager();
-    }
-    else
-    {
-        CoinsAnimationManager.Instance.ResetCoins();
-    }
+        // if (CoinsAnimationManager.Instance == null)
+        // {
+        //     CoinsAnimationManager.Instance = new CoinsAnimationManager();
+        // }
+        // else
+        // {
+        //     CoinsAnimationManager.Instance.ResetCoins();
+        // }
 
-    if (_currSetup != null)
-    {
-        _index++;
-        if (_index >= levelPieceBasedSetups.Count)
+        if (_currSetup != null)
         {
-            ResetLevelIndex();
-        }
-    }
-
-    _currSetup = levelPieceBasedSetups[_index];
-
-    // Criar a peça do início do cenário (peça fixa)
-    if (_currSetup.pieceStartNumber > 0 && _currSetup.levelPieceStart.Count > 0)
-    {
-        CreateLevelPiece(_currSetup.levelPieceStart[0]);
-    }
-
-    // Criar as peças intermediárias randomicamente
-    List<LevelPieceBase> availablePieces = new List<LevelPieceBase>(_currSetup.levelPieces);
-    int consecutiveCount = 0;
-    int piecesCount = 0;
-
-    while (piecesCount < _currSetup.PiecesNumber)
-    {
-        // Verificar se ainda há peças disponíveis para criar
-        if (availablePieces.Count == 0)
-        {
-            availablePieces = new List<LevelPieceBase>(_currSetup.levelPieces); // Resetar a lista de peças disponíveis
-            continue; // Continuar o loop para tentar novamente criar as peças restantes
+            // _index++;
+            if (_index >= levelPieceBasedSetups.Count)
+            {
+                ResetLevelIndex();
+            }
         }
 
-        // Obtemos a próxima peça aleatória
-        LevelPieceBase nextPiece = availablePieces[Random.Range(0, availablePieces.Count)];
+        _currSetup = levelPieceBasedSetups[_index];
 
-        // Removemos a peça da lista de peças disponíveis para evitar repetições em sequência
-        availablePieces.Remove(nextPiece);
-
-        // Se a próxima peça for igual à última criada, adicionamos 1 ao contador de peças consecutivas
-        if (_spawnedPieces.Count > 0 && nextPiece == _spawnedPieces[_spawnedPieces.Count - 1])
+        // Criar a peça do início do cenário (peça fixa)
+        if (_currSetup.pieceStartNumber > 0 && _currSetup.levelPieceStart.Count > 0)
         {
-            consecutiveCount++;
-        }
-        else
-        {
-            // Se a próxima peça for diferente, resetamos o contador
-            consecutiveCount = 0;
+            CreateLevelPiece(_currSetup.levelPieceStart[0]);
         }
 
-        // Se tivermos 3 peças consecutivas iguais, adicionamos novamente a peça removida para evitar quebras na sequência
-        if (consecutiveCount >= 3 && availablePieces.Count > 0)
+        // Criar as peças intermediárias randomicamente
+        List<LevelPieceBase> availablePieces = new List<LevelPieceBase>(_currSetup.levelPieces);
+        int consecutiveCount = 0;
+        int piecesCount = 0;
+
+        while (piecesCount < _currSetup.PiecesNumber)
         {
-            availablePieces.Add(nextPiece);
-            nextPiece = availablePieces[Random.Range(0, availablePieces.Count)];
+            // Verificar se ainda há peças disponíveis para criar
+            if (availablePieces.Count == 0)
+            {
+                availablePieces = new List<LevelPieceBase>(_currSetup.levelPieces); // Resetar a lista de peças disponíveis
+                continue; // Continuar o loop para tentar novamente criar as peças restantes
+            }
+
+            // Obtemos a próxima peça aleatória
+            LevelPieceBase nextPiece = availablePieces[Random.Range(0, availablePieces.Count)];
+
+            // Removemos a peça da lista de peças disponíveis para evitar repetições em sequência
             availablePieces.Remove(nextPiece);
-            consecutiveCount = 0; // Resetamos o contador após escolher uma peça diferente
+
+            // Se a próxima peça for igual à última criada, adicionamos 1 ao contador de peças consecutivas
+            if (_spawnedPieces.Count > 0 && nextPiece == _spawnedPieces[_spawnedPieces.Count - 1])
+            {
+                consecutiveCount++;
+            }
+            else
+            {
+                // Se a próxima peça for diferente, resetamos o contador
+                consecutiveCount = 0;
+            }
+
+            // Se tivermos 3 peças consecutivas iguais, adicionamos novamente a peça removida para evitar quebras na sequência
+            if (consecutiveCount >= 3 && availablePieces.Count > 0)
+            {
+                availablePieces.Add(nextPiece);
+                nextPiece = availablePieces[Random.Range(0, availablePieces.Count)];
+                availablePieces.Remove(nextPiece);
+                consecutiveCount = 0; // Resetamos o contador após escolher uma peça diferente
+            }
+
+            CreateLevelPiece(nextPiece);
+            piecesCount++; // Incrementar a contagem de peças criadas
         }
 
-        CreateLevelPiece(nextPiece);
-        piecesCount++; // Incrementar a contagem de peças criadas
+        // Criar a peça do fim do cenário (peça fixa)
+        if (_currSetup.pieceEndNumber > 0 && _currSetup.levelPieceEnd.Count > 0)
+        {
+            CreateLevelPiece(_currSetup.levelPieceEnd[0]);
+        }
+
+        ColorManager.Instance.ChangeColorByType(_currSetup.artType);
+
+        StartCoroutine(ScalePiecesByTime());
+        CoinsAnimationManager.Instance.StartAnimationsCoins();
+
+        Debug.Log("createLevelPieces");
     }
-
-    // Criar a peça do fim do cenário (peça fixa)
-    if (_currSetup.pieceEndNumber > 0 && _currSetup.levelPieceEnd.Count > 0)
-    {
-        CreateLevelPiece(_currSetup.levelPieceEnd[0]);
-    }
-
-    ColorManager.Instance.ChangeColorByType(_currSetup.artType);
-
-    StartCoroutine(ScalePiecesByTime());
-    CoinsAnimationManager.Instance.StartAnimationsCoins();
-
-    Debug.Log("createLevelPieces");
-}
 
 
 
@@ -177,7 +178,7 @@ public void CreateLevelPieces()
 
     public void ResetLevelIndex()
     {
-        _index = 0;
-        Debug.Log("resetLevel");
+        _index = Random.Range(0, levelPieceBasedSetups.Count);
+        Debug.Log("resetLevel" + _index);
     }
 }
