@@ -164,7 +164,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5907984868839039531, guid: 5e686569db43d4d93bba7bd62597abb1, type: 3}
       propertyPath: looping
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5907984868839039531, guid: 5e686569db43d4d93bba7bd62597abb1, type: 3}
       propertyPath: CollisionModule.type
