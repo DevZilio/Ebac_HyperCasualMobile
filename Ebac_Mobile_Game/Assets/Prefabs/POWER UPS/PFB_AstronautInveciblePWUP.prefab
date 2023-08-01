@@ -957,6 +957,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5591520545179813592}
   - component: {fileID: 7667784560417997287}
+  - component: {fileID: 8363768573606613370}
   m_Layer: 0
   m_Name: PFB_AstronautInveciblePWUP
   m_TagString: Untagged
@@ -1007,6 +1008,27 @@ MonoBehaviour:
   - type: 3
     trigger: fly
     speed: 1.5
+--- !u!95 &8363768573606613370
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5103355608297217122}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0679eaf60be004e3b8f0403e58e867c4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5114128248317141449
 GameObject:
   m_ObjectHideFlags: 0
