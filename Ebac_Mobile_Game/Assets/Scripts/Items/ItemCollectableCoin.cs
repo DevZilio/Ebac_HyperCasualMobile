@@ -46,6 +46,8 @@ public class ItemCollectableCoin : ItemCollectableBase
         // Call the AddCoins function in the ItemManager singleton
         ItemManager.Instance.AddCoins();
 
+    
+
     }
 
     protected override void Collect()
