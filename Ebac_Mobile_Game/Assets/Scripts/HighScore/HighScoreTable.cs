@@ -6,10 +6,13 @@ using UnityEngine.UI;
 
 public class HighScoreTable : MonoBehaviour
 {
+    public int maxNumHighScore = 5;
+
     private Transform _entryContainer;
     private Transform _entryTemplate;
     private List<Transform> _highScoreEntryTransformList;
-    public int maxNumHighScore = 5;
+    public HighScores highscores;
+
 
     // Chave para salvar os High Scores no PlayerPrefs
     private const string highScoreKey = "highscoreTable";
@@ -26,7 +29,7 @@ public class HighScoreTable : MonoBehaviour
         // ResetHighScores();
 
         string jsonString = PlayerPrefs.GetString(highScoreKey);
-        HighScores highscores = JsonUtility.FromJson<HighScores>(jsonString);
+        highscores = JsonUtility.FromJson<HighScores>(jsonString);
 
 
 
@@ -36,9 +39,9 @@ public class HighScoreTable : MonoBehaviour
 
             // There's no stored table, initialize
             Debug.Log("Initializing table with default values...");
-            AddHighScoreEntry(2, "CMK");
-            AddHighScoreEntry(1, "JOE");
-            AddHighScoreEntry(1, "DAV");
+            AddHighScoreEntry(20, "CMK");
+            AddHighScoreEntry(15, "JOE");
+            AddHighScoreEntry(10, "DAV");
 
             // Reload
             jsonString = PlayerPrefs.GetString("highscoreTable");
@@ -92,7 +95,7 @@ public class HighScoreTable : MonoBehaviour
 
         // Carregar novamente os dados dos high scores
         string jsonString = PlayerPrefs.GetString(highScoreKey);
-        HighScores highscores = JsonUtility.FromJson<HighScores>(jsonString);
+        highscores = JsonUtility.FromJson<HighScores>(jsonString);
 
         // Ordenar a lista de high scores em ordem decrescente
         highscores.highscoreEntryList.Sort((a, b) => b.score.CompareTo(a.score));
@@ -116,7 +119,7 @@ public class HighScoreTable : MonoBehaviour
     {
         // Carregar os high scores existentes do PlayerPrefs
         string jsonString = PlayerPrefs.GetString(highScoreKey);
-        HighScores highscores = JsonUtility.FromJson<HighScores>(jsonString);
+        highscores = JsonUtility.FromJson<HighScores>(jsonString);
 
         if (highscores == null)
         {
@@ -188,8 +191,16 @@ public class HighScoreTable : MonoBehaviour
         transformList.Add(entryTransform);
     }
 
+public List<HighScoreEntry> GetHighScoreEntries()
+{
+    if (highscores != null)
+    {
+        return highscores.highscoreEntryList;
+    }
+    return new List<HighScoreEntry>();
+}
 
-    private class HighScores
+    public class HighScores
     {
         public List<HighScoreEntry> highscoreEntryList;
     }
@@ -197,7 +208,7 @@ public class HighScoreTable : MonoBehaviour
 
     //Represents a single High Score entry
     [System.Serializable]
-    private class HighScoreEntry
+    public class HighScoreEntry
     {
         public int score;
         public string name;

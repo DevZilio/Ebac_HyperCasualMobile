@@ -8,8 +8,9 @@ public class NameInputController : MonoBehaviour
     public Button confirmButton;
 
     public GameObject highScoreContainer;
-    public GameObject endGame;
+    
 
+    
 
     private HighScoreTable highScoreTable;
 
@@ -18,18 +19,19 @@ public class NameInputController : MonoBehaviour
         highScoreTable = FindObjectOfType<HighScoreTable>();
 
         // Definir o limite de caracteres para 3
-    nameInputField.characterLimit = 3;
+        nameInputField.characterLimit = 3;
 
-    // Adicionar o evento OnEndEdit para realizar a conversão para letras maiúsculas
-    nameInputField.onEndEdit.AddListener(OnEndEdit);
+        // Adicionar o evento OnEndEdit para realizar a conversão para letras maiúsculas
+        nameInputField.onEndEdit.AddListener(OnEndEdit);
 
+        
     }
 
     private void OnEndEdit(string text)
-{
-    // Converter o texto para letras maiúsculas
-    nameInputField.text = text.ToUpper();
-}
+    {
+        // Converter o texto para letras maiúsculas
+        nameInputField.text = text.ToUpper();
+    }
 
     private void OnEnable()
     {
@@ -45,6 +47,7 @@ public class NameInputController : MonoBehaviour
     {
         if (highScoreTable != null)
         {
+            // Usar o nome já declarado no campo
             string playerName = nameInputField.text;
             int totalCoinsCollected = ItemManager.Instance.GetTotalCoins();
 
@@ -55,11 +58,9 @@ public class NameInputController : MonoBehaviour
 
                 // Após adicionar o novo score, atualiza a tabela imediatamente
                 highScoreTable.UpdateHighScoreTable();
-            }
 
-            // // Desative o Canvas de endGame de nome após clicar no botão de confirmar
-            // endGame.SetActive(false);
-            // highScoreContainer.SetActive(true);
+               
+            }
         }
     }
 }
