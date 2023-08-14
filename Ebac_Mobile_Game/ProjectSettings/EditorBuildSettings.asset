@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Level 01 Prototype Module 21 - After HighScore 1.unity
+    path: Assets/Scenes/Game Prototype Complete.unity
     guid: adb042e6ac9834cca9ea6b32b1e4cd62
   m_configObjects: {}

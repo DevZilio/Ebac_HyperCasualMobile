@@ -29,4 +29,4 @@ MonoBehaviour:
   pieceStartNumber: 1
   pieceEndNumber: 1
   minPiecesNumber: 7
-  maxPiecesNumber: 7
+  maxPiecesNumber: 25
